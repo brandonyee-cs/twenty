@@ -33,9 +33,6 @@ export enum CalendarEventParticipantResponseStatus {
 })
 @WorkspaceIsSystem()
 @WorkspaceIsNotAuditLogged()
-@WorkspaceGate({
-  featureFlag: 'IS_CALENDAR_ENABLED',
-})
 export class CalendarEventParticipantObjectMetadata extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: CALENDAR_EVENT_PARTICIPANT_STANDARD_FIELD_IDS.handle,

@@ -1,5 +1,6 @@
 import { Relation } from 'src/engine/workspace-manager/workspace-sync-metadata/interfaces/relation.interface';
 
+import { RelationMetadata } from 'src/engine/workspace-manager/workspace-sync-metadata/decorators/relation-metadata.decorator';
 import { FeatureFlagKeys } from 'src/engine/core-modules/feature-flag/feature-flag.entity';
 import { FieldMetadataType } from 'src/engine/metadata-modules/field-metadata/field-metadata.entity';
 import {
@@ -30,9 +31,6 @@ import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-re
 })
 @WorkspaceIsSystem()
 @WorkspaceIsNotAuditLogged()
-@WorkspaceGate({
-  featureFlag: FeatureFlagKeys.IsCalendarEnabled,
-})
 export class CalendarEventObjectMetadata extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: CALENDAR_EVENT_STANDARD_FIELD_IDS.title,
@@ -165,9 +163,6 @@ export class CalendarEventObjectMetadata extends BaseWorkspaceEntity {
     icon: 'IconCalendar',
     inverseSideTarget: () => CalendarChannelEventAssociationObjectMetadata,
     onDelete: RelationOnDeleteAction.CASCADE,
-  })
-  @WorkspaceGate({
-    featureFlag: 'IS_CALENDAR_ENABLED',
   })
   calendarChannelEventAssociations: Relation<
     CalendarChannelEventAssociationObjectMetadata[]

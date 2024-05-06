@@ -4,7 +4,6 @@ import {
   RelationMetadataType,
   RelationOnDeleteAction,
 } from 'src/engine/metadata-modules/relation-metadata/relation-metadata.entity';
-import { FeatureFlagKeys } from 'src/engine/core-modules/feature-flag/feature-flag.entity';
 import { FieldMetadataType } from 'src/engine/metadata-modules/field-metadata/field-metadata.entity';
 import { CALENDAR_CHANNEL_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
@@ -33,9 +32,6 @@ export enum CalendarChannelVisibility {
 })
 @WorkspaceIsSystem()
 @WorkspaceIsNotAuditLogged()
-@WorkspaceGate({
-  featureFlag: FeatureFlagKeys.IsCalendarEnabled,
-})
 export class CalendarChannelObjectMetadata extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: CALENDAR_CHANNEL_STANDARD_FIELD_IDS.handle,

@@ -213,9 +213,6 @@ export class WorkspaceMemberObjectMetadata extends BaseWorkspaceEntity {
     inverseSideFieldKey: 'workspaceMember',
     onDelete: RelationOnDeleteAction.SET_NULL,
   })
-  @WorkspaceGate({
-    featureFlag: 'IS_CALENDAR_ENABLED',
-  })
   calendarEventParticipants: Relation<CalendarEventParticipantObjectMetadata[]>;
 
   @WorkspaceRelation({
