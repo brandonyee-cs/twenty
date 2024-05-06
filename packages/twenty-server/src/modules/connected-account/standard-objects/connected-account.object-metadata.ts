@@ -8,7 +8,6 @@ import {
 } from 'src/engine/metadata-modules/relation-metadata/relation-metadata.entity';
 import { CONNECTED_ACCOUNT_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
-import { IsNullable } from 'src/engine/workspace-manager/workspace-sync-metadata/decorators/is-nullable.decorator';
 import { CalendarChannelObjectMetadata } from 'src/modules/calendar/standard-objects/calendar-channel.object-metadata';
 import { MessageChannelObjectMetadata } from 'src/modules/messaging/standard-objects/message-channel.object-metadata';
 import { WorkspaceMemberObjectMetadata } from 'src/modules/workspace-member/standard-objects/workspace-member.object-metadata';
@@ -19,6 +18,7 @@ import { WorkspaceIsNotAuditLogged } from 'src/engine/twenty-orm/decorators/work
 import { WorkspaceField } from 'src/engine/twenty-orm/decorators/workspace-field.decorator';
 import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-relation.decorator';
 import { WorkspaceGate } from 'src/engine/twenty-orm/decorators/workspace-gate.decorator';
+import { WorkspaceIsNullable } from 'src/engine/twenty-orm/decorators/workspace-is-nullable.decorator';
 
 export enum ConnectedAccountProvider {
   GOOGLE = 'google',
@@ -87,7 +87,7 @@ export class ConnectedAccountObjectMetadata extends BaseWorkspaceEntity {
     description: 'Auth failed at',
     icon: 'IconX',
   })
-  @IsNullable()
+  @WorkspaceIsNullable()
   authFailedAt: Date;
 
   @WorkspaceRelation({
